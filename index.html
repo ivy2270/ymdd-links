@@ -9,135 +9,114 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://font.emtech.cc/css/jfOpenHuninn" rel="stylesheet" />
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-<style>
-    :root {
-        --primary-blue: #1a365d;      /* 專業深藍 */
-        --light-blue: #f7fafc;        /* 淺色背景 */
-        --accent-mint: #2c7a7b;       /* 點綴薄荷綠 */
-        --dark-blue: #102a43;         /* 深藍按鈕 Hover */
-        --mint-hover: #285e5e;        /* 薄荷綠按鈕 Hover */
-        --danger-red: #c53030;        /* 警示紅 */
-        --text-main: #2d3748;         
-    }
-
-    body { 
-        background-color: var(--light-blue); 
-        font-family: 'jfOpenHuninn', 'Microsoft JhengHei', sans-serif;
-        color: var(--text-main);
-        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
-        background-size: 24px 24px;
-    }
-
-    /* 連結顏色 */
-    a { color: var(--primary-blue); text-decoration: none; transition: 0.2s; }
-    a:hover { color: var(--accent-mint); }
-
-    /* 1. 一般 Primary 按鈕 (深藍色) */
-    .btn-primary { 
-        background-color: var(--primary-blue) !important; 
-        border-color: var(--primary-blue) !important; 
-    }
-    .btn-primary:hover { background-color: var(--dark-blue) !important; }
-
-    /* 2. 成功區塊的複製按鈕 (換成薄荷綠，更亮眼) */
-    #success-alert .btn-primary {
-        background-color: var(--accent-mint) !important;
-        border-color: var(--accent-mint) !important;
-    }
-    #success-alert .btn-primary:hover {
-        background-color: var(--mint-hover) !important;
-    }
-
-    /* 3. 按鈕內的圖示顏色：強制變白色，解決消失問題 */
-    .btn-primary i, 
-    .btn-primary .fa-copy { 
-        color: #ffffff !important; 
-    }
-
-    /* 4. 列表中的複製圖示 (白色背景上，使用深藍色) */
-    .btn-link .fa-copy, 
-    .text-muted-link .fa-copy {
-        color: var(--primary-blue) !important;
-        transition: 0.2s;
-    }
-    .btn-link:hover .fa-copy, 
-    .text-muted-link:hover .fa-copy {
-        color: var(--accent-mint) !important;
-    }
-
-    /* 5. Bootstrap Outline 按鈕覆蓋 */
-    .btn-outline-primary { 
-        color: var(--primary-blue) !important; 
-        border-color: var(--primary-blue) !important; 
-    }
-    .btn-outline-primary:hover { 
-        background-color: var(--primary-blue) !important; 
-        color: white !important; 
-    }
-
-    /* 卡片與邊框 */
-    .border-primary { border-color: var(--primary-blue) !important; }
-    .card { 
-        border: none; border-radius: 12px; 
-        box-shadow: 0 4px 12px rgba(26, 54, 93, 0.08);
-        overflow: hidden;
-    }
-
-    .form-control:focus { 
-        border-color: var(--primary-blue); 
-        box-shadow: 0 0 0 0.25rem rgba(26, 54, 93, 0.1); 
-    }
-
-    #success-alert {
-        display: none; background: white; border-left: 5px solid var(--accent-mint);
-        margin-bottom: 25px; padding: 20px;
-    }
-
-    .url-display {
-        background: #ffffff;
-        border: 2px solid var(--primary-blue);
-        color: var(--primary-blue);
-        border-radius: 8px;
-        padding: 12px;
-        margin-bottom: 12px;
-        word-break: break-all;
-    }
-
-    code { color: var(--primary-blue); background: #ebf4ff; font-weight: bold; }
-
-    /* 複製成功的 Toast */
-    .copy-toast {
-        position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-        background: var(--dark-blue); color: white; padding: 12px 28px;
-        border-radius: 50px; display: none; z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    /* 登入小圖示 */
-    .text-primary { color: var(--primary-blue) !important; }
-    .user-badge {
-        background: #fff; border: 1px solid #e2e8f0; padding: 6px 14px;
-        border-radius: 50px; display: flex; align-items: center; gap: 8px;
-    }
-
-    @media (max-width: 768px) {
-        .mobile-card {
-            background: white; margin-bottom: 12px; padding: 16px;
-            border-radius: 12px; border: 1px solid #e2e8f0;
+    <style>
+        :root {
+            --primary-mint: #4db6ac;     /* 活潑薄荷綠 */
+            --soft-mint: #f4fbfb;        /* 柔和底色 */
+            --dark-mint: #3d948c;        /* 深薄荷 */
+            --danger-red: #ff7675;       /* 柔和紅 */
+            --text-main: #455a64;        /* 莫蘭迪暖灰藍 */
+            --border-light: #e0f2f1;
         }
-    }
-</style>
+
+        body { 
+            background-color: var(--soft-mint); 
+            font-family: 'jfOpenHuninn', 'Microsoft JhengHei', sans-serif;
+            color: var(--text-main);
+            background-image: radial-gradient(#d1e7e5 0.8px, transparent 0.8px);
+            background-size: 24px 24px;
+        }
+
+        a { color: var(--primary-mint); text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--dark-mint); text-decoration: underline; }
+        .text-muted-link { color: #829298 !important; }
+        .text-muted-link:hover { color: var(--primary-mint) !important; }
+
+        .card { 
+            border: none; border-radius: 20px; 
+            box-shadow: 0 8px 24px rgba(77, 182, 172, 0.12);
+        }
+
+        /* 複刻按鈕動態與圓角 */
+        .btn-primary { 
+            background-color: var(--primary-mint); border: none; border-radius: 12px;
+            padding: 10px 20px; transition: all 0.3s; color: white;
+        }
+        .btn-primary:hover:not(:disabled) { 
+            background-color: var(--dark-mint); 
+            transform: translateY(-1px); 
+            box-shadow: 0 4px 12px rgba(77, 182, 172, 0.2);
+            color: white; 
+        }
+        .btn-primary:focus, .btn-primary:active { 
+            background-color: var(--dark-mint) !important; 
+            box-shadow: 0 0 0 0.25rem rgba(77, 182, 172, 0.25) !important; 
+        }
+        .btn-primary:disabled { background-color: #cbd5d4; opacity: 0.8; }
+
+        .btn-outline-primary { 
+            color: var(--primary-mint); border-color: var(--primary-mint); border-radius: 10px; 
+        }
+        .btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:focus { 
+            background-color: var(--primary-mint) !important; 
+            border-color: var(--primary-mint) !important; 
+            color: white !important;
+            box-shadow: 0 0 0 0.25rem rgba(77, 182, 172, 0.25) !important;
+        }
+
+        .btn-outline-danger { color: var(--danger-red); border-color: var(--danger-red); border-radius: 10px; }
+        .btn-outline-danger:hover { background-color: var(--danger-red); color: white; border-color: var(--danger-red); }
+
+        .form-control { border-radius: 12px; border: 2px solid var(--border-light); padding: 10px 15px; }
+        .form-control:focus {
+            border-color: var(--primary-mint);
+            box-shadow: 0 0 0 0.25rem rgba(77, 182, 172, 0.15);
+        }
+
+        /* 複刻橘子版虛線框 */
+        #success-alert {
+            display: none; background: white; border: 2px dashed var(--primary-mint);
+            border-radius: 15px; margin-bottom: 25px; padding: 20px;
+        }
+
+        .url-display {
+            word-break: break-all; font-size: 1.1rem; color: var(--dark-mint);
+            background: var(--soft-mint); padding: 12px; border-radius: 10px;
+            display: block; margin-bottom: 12px;
+        }
+
+        code { color: var(--dark-mint); font-weight: bold; background: #e0f2f1; padding: 3px 8px; border-radius: 6px; }
+
+        .copy-toast {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: rgba(69, 90, 100, 0.95); color: white; padding: 12px 28px;
+            border-radius: 50px; display: none; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-card {
+                background: white; margin-bottom: 15px; padding: 18px;
+                border-radius: 15px; border: 1px solid var(--border-light);
+            }
+        }
+
+        .user-badge {
+            background: #fff; border: 1.5px solid var(--border-light); padding: 5px 12px;
+            border-radius: 50px; display: flex; align-items: center; gap: 8px;
+        }
+    </style>
 </head>
 <body>
 
-<div id="copy-toast" class="copy-toast"><i class="fas fa-check-circle me-2" style="color: #68d391;"></i>網址已複製到剪貼簿</div>
+<div id="copy-toast" class="copy-toast"><i class="fas fa-check-circle me-2" style="color: #68d391;"></i>複製成功囉！ ✨</div>
 
 <div class="container py-4 py-md-5">
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold m-0 d-flex align-items-center" style="color: var(--primary-blue);">
-            <i class="fas fa-tooth me-3"></i> 陽明牙醫校友會短網址
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3 mb-md-4">
+        <h2 class="fw-bold m-0 d-flex align-items-center" style="color: var(--text-main);">
+            <span class="me-2">🦷</span> 陽明牙醫校友會短網址
         </h2>
         
-        <div id="auth-section" class="mt-3 mt-md-0">
+        <div id="auth-section" class="mt-2 mt-md-0">
             <div id="login-section">
                 <div id="g_id_onload"
                      data-client_id="644865580953-5t01dtn5ctusbq4gfijrl7nh1nmmhi01.apps.googleusercontent.com"
@@ -148,9 +127,8 @@
             </div>
             <div id="user-info-section" style="display: none;">
                 <div class="user-badge shadow-sm">
-                    <i class="fas fa-user-md text-primary"></i>
-                    <span id="user-email-display" class="small fw-bold"></span>
-                    <button onclick="logout()" class="btn btn-link btn-sm p-0 text-danger ms-1" title="登出"><i class="fas fa-sign-out-alt"></i></button>
+                    <span id="user-email-display" class="small fw-bold" style="color: var(--text-main);"></span>
+                    <button onclick="logout()" class="btn btn-link btn-sm p-0 text-danger ms-2" title="登出"><i class="fas fa-sign-out-alt"></i></button>
                 </div>
             </div>
         </div>
@@ -158,33 +136,33 @@
 
     <div id="admin-section" style="display: none;">
         
-        <div id="success-alert" class="card shadow-sm mb-4">
-            <div class="card-body text-center">
-                <div class="small fw-bold text-muted mb-2"><i class="fas fa-link me-1"></i> 短網址已成功建立：</div>
+        <div id="success-alert" class="card">
+            <div class="text-center">
+                <div class="small fw-bold text-muted mb-2"><i class="fas fa-magic me-1"></i> 耶！新網址準備好囉：</div>
                 <div id="new-full-url" class="url-display fw-bold"></div>
                 <button class="btn btn-primary btn-sm px-4" onclick="copyText(document.getElementById('new-full-url').innerText)">
-                    <i class="fas fa-copy me-1"></i> 複製網址
+                    <i class="fas fa-copy me-1"></i> 點我複製網址
                 </button>
             </div>
         </div>
 
-        <div class="card mb-4 border-top border-4 border-primary shadow-sm">
+        <div class="card mb-4">
             <div class="card-body p-4">
-                <h5 class="fw-bold mb-3 d-flex align-items-center">
-                    <i class="fas fa-plus-square me-2 text-primary"></i> 建立新連結
+                <h5 class="fw-bold mb-3 d-flex align-items-center" style="color: var(--text-main);">
+                    <i class="fas fa-plus-circle me-2" style="color: var(--primary-mint);"></i>新增 / 編輯連結
                 </h5>
                 <div class="row g-3">
                     <div class="col-md-4">
-                        <label class="form-label small fw-bold text-muted">自訂代碼 (Slug)</label>
-                        <input type="text" id="slug" class="form-control" placeholder="選填，例如：conf2026">
+                        <label class="form-label small fw-bold text-muted">短代碼 (Slug)</label>
+                        <input type="text" id="slug" class="form-control" placeholder="留空則隨機產生">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label small fw-bold text-muted">目標長網址 (Target URL)</label>
-                        <input type="url" id="original_url" class="form-control" placeholder="https://...">
+                        <label class="form-label small fw-bold text-muted">目標網址 (Target URL)</label>
+                        <input type="url" id="original_url" class="form-control" placeholder="請貼上連結 https://...">
                     </div>
                     <div class="col-md-2 d-flex align-items-end">
                         <button onclick="upsertLink()" id="save-btn" class="btn btn-primary w-100 fw-bold">
-                            <span id="btn-text">建立連結</span>
+                            <span id="btn-text"><i class="fas fa-cloud-upload-alt me-1"></i>儲存連結</span>
                             <span id="btn-spinner" class="spinner-border spinner-border-sm d-none"></span>
                         </button>
                     </div>
@@ -194,35 +172,36 @@
 
         <div class="card shadow-sm">
             <div class="card-body p-0">
-                <div class="p-3 d-flex justify-content-between align-items-center border-bottom">
-                    <h5 class="m-0 fw-bold"><i class="fas fa-list me-2 text-primary"></i> 已建立連結</h5>
-                    <div id="list-loading" class="spinner-border spinner-border-sm text-primary" style="display:none"></div>
+                <div class="p-3 d-flex justify-content-between align-items-center border-bottom" style="background-color: #fdfdfd;">
+                    <h5 class="m-0 fw-bold" style="color: var(--text-main);"><i class="fas fa-list-ul me-2" style="color: var(--primary-mint);"></i>管理清單</h5>
+                    <div id="list-loading" class="spinner-border spinner-border-sm text-info" style="display:none"></div>
                 </div>
                 
                 <div class="table-responsive d-none d-md-block">
                     <table class="table table-hover align-middle mb-0">
-                        <thead class="table-light">
+                        <thead style="background-color: #fafcfc;">
                             <tr>
-                                <th class="ps-4">短網址路徑</th>
-                                <th>目標原始網址</th>
+                                <th class="ps-4">短代碼 / 預覽</th>
+                                <th>原始網址</th>
                                 <th class="text-end pe-4">管理操作</th>
                             </tr>
                         </thead>
                         <tbody id="link-list-pc"></tbody>
                     </table>
                 </div>
+
                 <div id="link-list-mobile" class="d-md-none p-3"></div>
             </div>
         </div>
     </div>
     
     <div class="text-center mt-5">
-        <p class="text-muted small">© 陽明牙醫校友會 | 專用內部轉址系統</p>
+        <p class="text-muted small">© 陽明牙醫校友會 | 專業轉址系統</p>
     </div>
 </div>
 
 <script>
-    /* JavaScript 完全保留原始邏輯 */
+    // JavaScript 保持你的原始邏輯，僅更新渲染部分的 HTML 結構與 icon
     let USER_TOKEN = "";
     const API_ENDPOINT = "/api/manage"; 
     const BASE_URL = window.location.origin;
@@ -257,7 +236,7 @@
 
     function checkAuthError(res) {
         if (res.status === "error" && res.message && res.message.includes("無權限")) {
-            alert("🔒 權限不足或登入過期");
+            alert("🔒 登入過期囉，請重新登入！");
             logout();
             return true;
         }
@@ -289,11 +268,13 @@
                     <button class="btn btn-link btn-sm p-0 ms-2 text-muted-link" onclick="copyText('${fullUrl}')"><i class="far fa-copy"></i></button>
                 </td>
                 <td style="max-width: 350px;">
-                    <div class="text-truncate small text-muted">${item.url}</div>
+                    <div class="text-truncate small">
+                        <a href="${item.url}" target="_blank" class="text-muted-link"><i class="fas fa-link me-1" style="font-size: 10px;"></i>${item.url}</a>
+                    </div>
                 </td>
                 <td class="text-end pe-4">
-                    <button class="btn btn-sm btn-outline-primary me-2" onclick="editLink('${item.slug}', '${item.url}')"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-sm btn-outline-danger" onclick="deleteLink('${item.slug}')"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn btn-sm btn-outline-primary me-2" onclick="editLink('${item.slug}', '${item.url}')"><i class="fas fa-pencil-alt me-1"></i>編輯</button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteLink('${item.slug}')"><i class="fas fa-trash-alt me-1"></i>刪除</button>
                 </td>
             </tr>
         `}).join('');
@@ -301,12 +282,12 @@
         const htmlMobile = data.map(item => {
             const fullUrl = `${BASE_URL}/${item.slug}`;
             return `
-            <div class="mobile-card shadow-sm">
+            <div class="mobile-card">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <a href="${fullUrl}" target="_blank"><code>/${item.slug}</code></a>
-                    <div class="btn-group">
+                    <div class="btn-group shadow-sm">
                         <button class="btn btn-sm btn-outline-primary" onclick="copyText('${fullUrl}')"><i class="far fa-copy"></i></button>
-                        <button class="btn btn-sm btn-outline-primary" onclick="editLink('${item.slug}', '${item.url}')"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-sm btn-outline-primary" onclick="editLink('${item.slug}', '${item.url}')"><i class="fas fa-pencil-alt"></i></button>
                         <button class="btn btn-sm btn-outline-danger" onclick="deleteLink('${item.slug}')"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </div>
@@ -314,14 +295,14 @@
             </div>
         `}).join('');
 
-        pcTbody.innerHTML = htmlPc || '<tr><td colspan="3" class="text-center py-5">尚無建立任何網址</td></tr>';
-        mobileList.innerHTML = htmlMobile || '<div class="text-center py-5">尚無建立任何網址</div>';
+        pcTbody.innerHTML = htmlPc || '<tr><td colspan="3" class="text-center py-5 text-muted">還沒建立任何網址喔 🦷</td></tr>';
+        mobileList.innerHTML = htmlMobile || '<div class="text-center py-5 text-muted">還沒建立任何網址喔 🦷</div>';
     }
 
     function upsertLink() {
         let slug = document.getElementById('slug').value.trim();
         const url = document.getElementById('original_url').value.trim();
-        if(!url) return alert("請貼入網址");
+        if(!url) return alert("請輸入網址");
         if(!slug) slug = Math.random().toString(36).substring(2, 8);
         setLoading(true);
         fetch(API_ENDPOINT, {
@@ -344,7 +325,7 @@
     }
 
     function deleteLink(slug) {
-        if (!confirm(`確定刪除 /${slug}？`)) return;
+        if (!confirm(`確定要刪除 /${slug} 嗎？`)) return;
         fetch(API_ENDPOINT, {
             method: "POST",
             body: JSON.stringify({ id_token: USER_TOKEN, action: "delete", slug: slug })
