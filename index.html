@@ -46,6 +46,16 @@
             background-color: var(--primary-blue) !important; 
             color: white !important; 
         }
+        /* 修正複製圖示顏色，確保與主題一致 */
+.fa-copy {
+    color: var(--primary-blue) !important;
+    transition: 0.2s;
+}
+
+.fa-copy:hover {
+    color: var(--accent-mint) !important;
+    cursor: pointer;
+}
 
         /* 卡片上方裝飾條顏色 */
         .border-primary { border-color: var(--primary-blue) !important; }
