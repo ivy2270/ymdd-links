@@ -9,106 +9,123 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://font.emtech.cc/css/jfOpenHuninn" rel="stylesheet" />
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <style>
-        :root {
-            --primary-blue: #1a365d;      /* 專業深藍 */
-            --light-blue: #f7fafc;        /* 淺色背景 */
-            --accent-mint: #2c7a7b;       /* 點綴綠 */
-            --dark-blue: #102a43;         /* 按鈕 Hover */
-            --danger-red: #c53030;        /* 警示紅 */
-            --text-main: #2d3748;         
+<style>
+    :root {
+        --primary-blue: #1a365d;      /* 專業深藍 */
+        --light-blue: #f7fafc;        /* 淺色背景 */
+        --accent-mint: #2c7a7b;       /* 點綴薄荷綠 */
+        --dark-blue: #102a43;         /* 深藍按鈕 Hover */
+        --mint-hover: #285e5e;        /* 薄荷綠按鈕 Hover */
+        --danger-red: #c53030;        /* 警示紅 */
+        --text-main: #2d3748;         
+    }
+
+    body { 
+        background-color: var(--light-blue); 
+        font-family: 'jfOpenHuninn', 'Microsoft JhengHei', sans-serif;
+        color: var(--text-main);
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 24px 24px;
+    }
+
+    /* 連結顏色 */
+    a { color: var(--primary-blue); text-decoration: none; transition: 0.2s; }
+    a:hover { color: var(--accent-mint); }
+
+    /* 1. 一般 Primary 按鈕 (深藍色) */
+    .btn-primary { 
+        background-color: var(--primary-blue) !important; 
+        border-color: var(--primary-blue) !important; 
+    }
+    .btn-primary:hover { background-color: var(--dark-blue) !important; }
+
+    /* 2. 成功區塊的複製按鈕 (換成薄荷綠，更亮眼) */
+    #success-alert .btn-primary {
+        background-color: var(--accent-mint) !important;
+        border-color: var(--accent-mint) !important;
+    }
+    #success-alert .btn-primary:hover {
+        background-color: var(--mint-hover) !important;
+    }
+
+    /* 3. 按鈕內的圖示顏色：強制變白色，解決消失問題 */
+    .btn-primary i, 
+    .btn-primary .fa-copy { 
+        color: #ffffff !important; 
+    }
+
+    /* 4. 列表中的複製圖示 (白色背景上，使用深藍色) */
+    .btn-link .fa-copy, 
+    .text-muted-link .fa-copy {
+        color: var(--primary-blue) !important;
+        transition: 0.2s;
+    }
+    .btn-link:hover .fa-copy, 
+    .text-muted-link:hover .fa-copy {
+        color: var(--accent-mint) !important;
+    }
+
+    /* 5. Bootstrap Outline 按鈕覆蓋 */
+    .btn-outline-primary { 
+        color: var(--primary-blue) !important; 
+        border-color: var(--primary-blue) !important; 
+    }
+    .btn-outline-primary:hover { 
+        background-color: var(--primary-blue) !important; 
+        color: white !important; 
+    }
+
+    /* 卡片與邊框 */
+    .border-primary { border-color: var(--primary-blue) !important; }
+    .card { 
+        border: none; border-radius: 12px; 
+        box-shadow: 0 4px 12px rgba(26, 54, 93, 0.08);
+        overflow: hidden;
+    }
+
+    .form-control:focus { 
+        border-color: var(--primary-blue); 
+        box-shadow: 0 0 0 0.25rem rgba(26, 54, 93, 0.1); 
+    }
+
+    #success-alert {
+        display: none; background: white; border-left: 5px solid var(--accent-mint);
+        margin-bottom: 25px; padding: 20px;
+    }
+
+    .url-display {
+        background: #ffffff;
+        border: 2px solid var(--primary-blue);
+        color: var(--primary-blue);
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 12px;
+        word-break: break-all;
+    }
+
+    code { color: var(--primary-blue); background: #ebf4ff; font-weight: bold; }
+
+    /* 複製成功的 Toast */
+    .copy-toast {
+        position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+        background: var(--dark-blue); color: white; padding: 12px 28px;
+        border-radius: 50px; display: none; z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* 登入小圖示 */
+    .text-primary { color: var(--primary-blue) !important; }
+    .user-badge {
+        background: #fff; border: 1px solid #e2e8f0; padding: 6px 14px;
+        border-radius: 50px; display: flex; align-items: center; gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .mobile-card {
+            background: white; margin-bottom: 12px; padding: 16px;
+            border-radius: 12px; border: 1px solid #e2e8f0;
         }
-
-        body { 
-            background-color: var(--light-blue); 
-            font-family: 'jfOpenHuninn', 'Microsoft JhengHei', sans-serif;
-            color: var(--text-main);
-            background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
-            background-size: 24px 24px;
-        }
-
-        /* 連結顏色覆蓋 */
-        a { color: var(--primary-blue); text-decoration: none; }
-        a:hover { color: var(--accent-mint); }
-
-        /* 消滅亮藍色：強制覆蓋 Bootstrap 類別 */
-        .btn-primary { 
-            background-color: var(--primary-blue) !important; 
-            border-color: var(--primary-blue) !important; 
-        }
-        .btn-primary:hover { background-color: var(--dark-blue) !important; }
-        
-        .btn-outline-primary { 
-            color: var(--primary-blue) !important; 
-            border-color: var(--primary-blue) !important; 
-        }
-        .btn-outline-primary:hover { 
-            background-color: var(--primary-blue) !important; 
-            color: white !important; 
-        }
-        /* 修正複製圖示顏色，確保與主題一致 */
-.fa-copy {
-    color: var(--primary-blue) !important;
-    transition: 0.2s;
-}
-
-.fa-copy:hover {
-    color: var(--accent-mint) !important;
-    cursor: pointer;
-}
-
-        /* 卡片上方裝飾條顏色 */
-        .border-primary { border-color: var(--primary-blue) !important; }
-
-        .card { 
-            border: none; border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.08);
-            overflow: hidden;
-        }
-
-        .form-control:focus { 
-            border-color: var(--primary-blue); 
-            box-shadow: 0 0 0 0.25rem rgba(26, 54, 93, 0.1); 
-        }
-
-        #success-alert {
-            display: none; background: white; border-left: 5px solid var(--accent-mint);
-            margin-bottom: 25px; padding: 20px;
-        }
-
-        .url-display {
-            background: #ffffff;
-            border: 2px solid var(--primary-blue);
-            color: var(--primary-blue);
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
-            word-break: break-all;
-        }
-
-        code { color: var(--primary-blue); background: #ebf4ff; font-weight: bold; }
-
-        /* 複製成功的 Toast (原本跑掉的原因) */
-        .copy-toast {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: var(--dark-blue); color: white; padding: 12px 28px;
-            border-radius: 50px; display: none; z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        /* 登入小圖示 */
-        .text-primary { color: var(--primary-blue) !important; }
-        .user-badge {
-            background: #fff; border: 1px solid #e2e8f0; padding: 6px 14px;
-            border-radius: 50px; display: flex; align-items: center; gap: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-card {
-                background: white; margin-bottom: 12px; padding: 16px;
-                border-radius: 12px; border: 1px solid #e2e8f0;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
 
