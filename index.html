@@ -4,349 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YMDD | 陽明牙醫校友會短網址</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://font.emtech.cc/css/jfOpenHuninn" rel="stylesheet" />
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NYMU Dental | 牙醫校友專屬短網址</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://font.emtech.cc/css/jfOpenHuninn" rel="stylesheet" />
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <style>
-        :root {
-            --primary-blue: #2c5282;      /* 專業深藍 */
-            --light-blue: #ebf4ff;        /* 背景淺藍 */
-            --accent-mint: #38b2ac;       /* 薄荷綠點綴 */
-            --dark-blue: #2a4365;         /* 深色文字/按鈕 */
-            --danger-red: #e53e3e;        /* 警示紅 */
-            --text-main: #2d3748;         /* 主文字色 */
-        }
-
-        body { 
-            background-color: var(--light-blue); 
-            font-family: 'jfOpenHuninn', 'Microsoft JhengHei', sans-serif;
-            color: var(--text-main);
-            background-image: radial-gradient(#cbd5e0 0.5px, transparent 0.5px);
-            background-size: 20px 20px; /* 微細點狀背景增添質感 */
-        }
-
-        a { color: var(--primary-blue); text-decoration: none; transition: 0.3s; }
-        a:hover { color: var(--accent-mint); text-decoration: underline; }
-        .text-muted-link { color: #718096 !important; }
-        .text-muted-link:hover { color: var(--primary-blue) !important; }
-
-        .card { 
-            border: none; border-radius: 16px; 
-            box-shadow: 0 4px 20px rgba(44, 82, 130, 0.08);
-        }
-
-        .btn-primary { 
-            background-color: var(--primary-blue); border: none; border-radius: 10px;
-            padding: 10px 20px; transition: all 0.3s; color: white;
-        }
-        .btn-primary:hover:not(:disabled) { background-color: var(--dark-blue); transform: translateY(-1px); }
-        .btn-primary:focus { box-shadow: 0 0 0 0.25rem rgba(44, 82, 130, 0.25) !important; }
-
-        .btn-outline-primary { color: var(--primary-blue); border-color: var(--primary-blue); border-radius: 8px; }
-        .btn-outline-primary:hover { background-color: var(--primary-blue); color: white; }
-
-        .form-control { border-radius: 10px; border: 2px solid #e2e8f0; padding: 10px 15px; }
-        .form-control:focus { border-color: var(--primary-blue); box-shadow: 0 0 0 0.25rem rgba(44, 82, 130, 0.1); }
-
-        #success-alert {
-            display: none; background: white; border-left: 5px solid var(--accent-mint);
-            border-radius: 12px; margin-bottom: 25px; padding: 20px;
-        }
-
-        .url-display {
-            word-break: break-all; font-size: 1.1rem; color: var(--primary-blue);
-            background: #f7fafc; padding: 12px; border-radius: 8px;
-            display: block; margin-bottom: 12px; border: 1px solid #edf2f7;
-        }
-
-        code { color: var(--primary-blue); font-weight: bold; background: #edf2f7; padding: 3px 8px; border-radius: 6px; }
-
-        .copy-toast {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: var(--dark-blue); color: white; padding: 12px 28px;
-            border-radius: 50px; display: none; z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .user-badge {
-            background: #fff; border: 1px solid #e2e8f0; padding: 6px 14px;
-            border-radius: 50px; display: flex; align-items: center; gap: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-card {
-                background: white; margin-bottom: 12px; padding: 16px;
-                border-radius: 12px; border: 1px solid #e2e8f0;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<div id="copy-toast" class="copy-toast"><i class="fas fa-check-circle me-2" style="color: #68d391;"></i>網址已複製到剪貼簿</div>
-
-<div class="container py-4 py-md-5">
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold m-0 d-flex align-items-center" style="color: var(--primary-blue);">
-            <i class="fas fa-tooth me-3"></i> 陽明牙醫校友會短網址
-        </h2>
-        
-        <div id="auth-section" class="mt-3 mt-md-0">
-            <div id="login-section">
-                <div id="g_id_onload"
-                     data-client_id="644865580953-5t01dtn5ctusbq4gfijrl7nh1nmmhi01.apps.googleusercontent.com"
-                     data-callback="handleCredentialResponse"
-                     data-auto_select="true">
-                </div>
-                <div class="g_id_signin" data-type="standard" data-shape="pill"></div>
-            </div>
-            <div id="user-info-section" style="display: none;">
-                <div class="user-badge shadow-sm">
-                    <i class="fas fa-user-md text-primary"></i>
-                    <span id="user-email-display" class="small fw-bold"></span>
-                    <button onclick="logout()" class="btn btn-link btn-sm p-0 text-danger ms-1" title="登出"><i class="fas fa-sign-out-alt"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="admin-section" style="display: none;">
-        
-        <div id="success-alert" class="card">
-            <div class="text-center">
-                <div class="small fw-bold text-muted mb-2"><i class="fas fa-link me-1"></i> 短網址已成功建立：</div>
-                <div id="new-full-url" class="url-display fw-bold"></div>
-                <button class="btn btn-primary btn-sm px-4" onclick="copyText(document.getElementById('new-full-url').innerText)">
-                    <i class="fas fa-copy me-1"></i> 複製網址
-                </button>
-            </div>
-        </div>
-
-        <div class="card mb-4 border-top border-4 border-primary">
-            <div class="card-body p-4">
-                <h5 class="fw-bold mb-3 d-flex align-items-center">
-                    <i class="fas fa-plus-square me-2 text-primary"></i> 建立新連結
-                </h5>
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <label class="form-label small fw-bold text-muted">自訂代碼 (Slug)</label>
-                        <input type="text" id="slug" class="form-control" placeholder="選填，例如：conf2026">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label small fw-bold text-muted">目標長網址 (Target URL)</label>
-                        <input type="url" id="original_url" class="form-control" placeholder="https://...">
-                    </div>
-                    <div class="col-md-2 d-flex align-items-end">
-                        <button onclick="upsertLink()" id="save-btn" class="btn btn-primary w-100 fw-bold">
-                            <span id="btn-text">建立連結</span>
-                            <span id="btn-spinner" class="spinner-border spinner-border-sm d-none"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card shadow-sm">
-            <div class="card-body p-0">
-                <div class="p-3 d-flex justify-content-between align-items-center border-bottom">
-                    <h5 class="m-0 fw-bold"><i class="fas fa-list me-2 text-primary"></i> 已建立連結</h5>
-                    <div id="list-loading" class="spinner-border spinner-border-sm text-primary" style="display:none"></div>
-                </div>
-                
-                <div class="table-responsive d-none d-md-block">
-                    <table class="table table-hover align-middle mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th class="ps-4">短網址路徑</th>
-                                <th>目標原始網址</th>
-                                <th class="text-end pe-4">管理操作</th>
-                            </tr>
-                        </thead>
-                        <tbody id="link-list-pc"></tbody>
-                    </table>
-                </div>
-
-                <div id="link-list-mobile" class="d-md-none p-3"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="text-center mt-5">
-        <p class="text-muted small">© 陽明牙醫校友會 | 專用內部轉址系統</p>
-    </div>
-</div>
-
-<script>
-    /* JavaScript 部分完全延用你的邏輯，只需微調 loading 顏色或圖示 */
-    let USER_TOKEN = "";
-    const API_ENDPOINT = "/api/manage"; 
-    const BASE_URL = window.location.origin;
-
-    function decodeJwt(token) {
-        try {
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            return JSON.parse(window.atob(base64));
-        } catch (e) { return null; }
+   <style>
+    :root {
+        --primary-blue: #1a365d;      /* 更穩重的深藍色 */
+        --light-blue: #f7fafc;        /* 極淺的灰色調背景 */
+        --accent-mint: #2c7a7b;       /* 較深一點的薄荷綠，提升閱讀性 */
+        --dark-blue: #102a43;         /* 按鈕 Hover 顏色 */
+        --danger-red: #c53030;        /* 穩重的紅色 */
+        --text-main: #2d3748;         
     }
 
-    function handleCredentialResponse(response) {
-        USER_TOKEN = response.credential;
-        const payload = decodeJwt(USER_TOKEN);
-        if (payload && payload.email) {
-            document.getElementById('user-email-display').innerText = payload.email;
-            document.getElementById('user-info-section').style.display = 'block';
-            document.getElementById('login-section').style.display = 'none';
-            document.getElementById('admin-section').style.display = 'block';
-            fetchList();
-        }
+    body { 
+        background-color: var(--light-blue); 
+        font-family: 'jfOpenHuninn', 'Microsoft JhengHei', sans-serif;
+        color: var(--text-main);
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 24px 24px;
     }
 
-    function logout() {
-        USER_TOKEN = "";
-        document.getElementById('admin-section').style.display = 'none';
-        document.getElementById('user-info-section').style.display = 'none';
-        document.getElementById('login-section').style.display = 'block';
-        google.accounts.id.disableAutoSelect();
+    /* 強制修改 Bootstrap 的 Primary 按鈕顏色 */
+    .btn-primary { 
+        background-color: var(--primary-blue) !important; 
+        border-color: var(--primary-blue) !important;
+        border-radius: 8px;
+    }
+    .btn-primary:hover { 
+        background-color: var(--dark-blue) !important; 
     }
 
-    function checkAuthError(res) {
-        if (res.status === "error" && res.message && res.message.includes("無權限")) {
-            alert("🔒 登入時效已過期，請重新登入！");
-            logout();
-            return true;
-        }
-        return false;
+    /* 強制修改 Bootstrap 的 Outline 按鈕顏色 */
+    .btn-outline-primary { 
+        color: var(--primary-blue) !important; 
+        border-color: var(--primary-blue) !important;
+        border-radius: 8px;
+    }
+    .btn-outline-primary:hover { 
+        background-color: var(--primary-blue) !important; 
+        color: white !important; 
     }
 
-    function fetchList() {
-        if (!USER_TOKEN) return;
-        document.getElementById('list-loading').style.display = 'block';
-        fetch(`${API_ENDPOINT}?action=list&id_token=${USER_TOKEN}`)
-            .then(res => res.json())
-            .then(res => { 
-                if (checkAuthError(res)) return;
-                if (res.status === "success") renderList(res.data.reverse()); 
-            })
-            .finally(() => document.getElementById('list-loading').style.display = 'none');
+    /* 其他自訂樣式保持專業感 */
+    .card { 
+        border: none; border-radius: 12px; 
+        box-shadow: 0 4px 12px rgba(26, 54, 93, 0.05);
     }
 
-    function renderList(data) {
-        const pcTbody = document.getElementById('link-list-pc');
-        const mobileList = document.getElementById('link-list-mobile');
-        
-        const htmlPc = data.map(item => {
-            const fullUrl = `${BASE_URL}/${item.slug}`;
-            return `
-            <tr>
-                <td class="ps-4">
-                    <a href="${fullUrl}" target="_blank"><code>/${item.slug}</code></a>
-                    <button class="btn btn-link btn-sm p-0 ms-2 text-muted-link" onclick="copyText('${fullUrl}')"><i class="far fa-copy"></i></button>
-                </td>
-                <td style="max-width: 350px;">
-                    <div class="text-truncate small text-muted">
-                        <a href="${item.url}" target="_blank" class="text-muted-link">${item.url}</a>
-                    </div>
-                </td>
-                <td class="text-end pe-4">
-                    <button class="btn btn-sm btn-outline-primary me-2" onclick="editLink('${item.slug}', '${item.url}')"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-sm btn-outline-danger" onclick="deleteLink('${item.slug}')"><i class="fas fa-trash-alt"></i></button>
-                </td>
-            </tr>
-        `}).join('');
-
-        const htmlMobile = data.map(item => {
-            const fullUrl = `${BASE_URL}/${item.slug}`;
-            return `
-            <div class="mobile-card shadow-sm">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <a href="${fullUrl}" target="_blank"><code>/${item.slug}</code></a>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-outline-primary" onclick="copyText('${fullUrl}')"><i class="far fa-copy"></i></button>
-                        <button class="btn btn-sm btn-outline-primary" onclick="editLink('${item.slug}', '${item.url}')"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-sm btn-outline-danger" onclick="deleteLink('${item.slug}')"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-                <div class="text-truncate small text-muted">${item.url}</div>
-            </div>
-        `}).join('');
-
-        pcTbody.innerHTML = htmlPc || '<tr><td colspan="3" class="text-center py-5">尚無建立任何網址</td></tr>';
-        mobileList.innerHTML = htmlMobile || '<div class="text-center py-5">尚無建立任何網址</div>';
+    .form-control:focus { 
+        border-color: var(--primary-blue); 
+        box-shadow: 0 0 0 0.25rem rgba(26, 54, 93, 0.1); 
     }
 
-    function upsertLink() {
-        let slug = document.getElementById('slug').value.trim();
-        const url = document.getElementById('original_url').value.trim();
-        if(!url) return alert("請貼入網址");
-        if(!slug) slug = Math.random().toString(36).substring(2, 8);
-        setLoading(true);
-        fetch(API_ENDPOINT, {
-            method: "POST",
-            body: JSON.stringify({ id_token: USER_TOKEN, action: "upsert", slug: slug, original_url: url })
-        })
-        .then(res => res.json())
-        .then(res => {
-            if (checkAuthError(res)) return;
-            if(res.status === "success") {
-                document.getElementById('new-full-url').innerText = `${BASE_URL}/${slug}`;
-                document.getElementById('success-alert').style.display = 'block';
-                document.getElementById('slug').value = "";
-                document.getElementById('original_url').value = "";
-                fetchList();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        })
-        .finally(() => setLoading(false));
+    .url-display {
+        background: #ffffff;
+        border: 2px solid var(--primary-blue);
+        color: var(--primary-blue);
+        border-radius: 8px;
     }
 
-    function deleteLink(slug) {
-        if (!confirm(`確定刪除 /${slug}？`)) return;
-        fetch(API_ENDPOINT, {
-            method: "POST",
-            body: JSON.stringify({ id_token: USER_TOKEN, action: "delete", slug: slug })
-        }).then(res => res.json()).then(res => {
-            if (checkAuthError(res)) return;
-            fetchList();
-        });
-    }
+    code { color: var(--primary-blue); background: #ebf4ff; }
 
-    function editLink(slug, url) {
-        document.getElementById('slug').value = slug;
-        document.getElementById('original_url').value = url;
-        document.getElementById('success-alert').style.display = 'none';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function copyText(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            const toast = document.getElementById('copy-toast');
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 2000);
-        });
-    }
-
-    function setLoading(isLoading) {
-        const btn = document.getElementById('save-btn');
-        const text = document.getElementById('btn-text');
-        const spinner = document.getElementById('btn-spinner');
-        btn.disabled = isLoading;
-        if(isLoading) { text.classList.add('d-none'); spinner.classList.remove('d-none'); }
-        else { text.classList.remove('d-none'); spinner.classList.add('d-none'); }
-    }
-</script>
-</body>
-</html>
+    /* 登入小圖示顏色 */
+    .text-primary { color: var(--primary-blue) !important; }
+</style>
 </head>
 <body>
 
